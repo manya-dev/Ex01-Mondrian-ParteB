@@ -1,3 +1,8 @@
-# Título
+# Descrição do elemento generativo escolhido e porquê
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod convallis magna ut pulvinar. Nulla iaculis, metus in semper vestibulum, lorem quam fringilla tellus, eu varius leo dui ac neque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed faucibus ultrices ante, ut suscipit est euismod ut. Duis sit amet dictum turpis. Fusce non turpis porta nisi iaculis eleifend. Donec eget lobortis risus. Proin molestie tincidunt elit. Donec a enim ac neque tristique molestie. Sed nibh massa, dignissim at ipsum non, volutpat aliquam erat. Sed tincidunt quis urna a semper. Phasellus leo orci, imperdiet et ullamcorper non, finibus eu nunc. Duis vel ligula ac orci tincidunt aliquam. Suspendisse potenti. Sed congue lectus at aliquet cursus. 
+Element: рух ліній і прямокутників назустріч до курсору.
+рухаються лінії, а прямокутники малюються відносно координат ліній.
+ефект створений за допомогою математики, код рахує різницю між коорд ліній і коорд курсораб кожного разу додаючи різницю, помножену на маленьке значення, що створює "анімацію". 
+
+пекмен як натхнення, лінії рухаються назустріч курсору, наближаючись/"нападаючи" на "гравця". відчуття клаустрофобії, закриття стін, звуження простору.
+
