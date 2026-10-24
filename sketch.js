@@ -1,16 +1,23 @@
 var c1, c2, r, b1, b2, y1, y2;
 //layer for lines
 var LineLayer;
+var TextureLayer;
+
+var mainVerticalX = 376;
+var leftVerticalX = 76;
+var rightVerticalX = 620;
+var topHorizontalY = 325;
+var middleHorizontalY = 520;
+var bottomHorizontalY = 763;
 
 function setup() {
   createCanvas(816, 800);
   LineLayer = createGraphics(width, height);
+  TextureLayer = createGraphics(width, height);
 
   // colors for a gradient background
   c1 = color(239, 243, 238);
   c2 = color(193, 186, 185);
-  //bg gradient
-  setGradient(c1, c2);
   // colors for a gradient blue square
   b1 = color(44, 52, 134);
   b2 = color(25, 19, 99);
@@ -19,60 +26,76 @@ function setup() {
   y2 = color(234, 189, 0);
 //test red color
   r = color(238, 36, 0);
+
+  drawTexture(TextureLayer, 30000);
 }
 
 function draw() {
+  setGradient(c1, c2);
+
+  if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+    mainVerticalX += (mouseX - mainVerticalX) * 0.02;
+    leftVerticalX += (mouseX - leftVerticalX) * 0.02;
+    rightVerticalX += (mouseX - rightVerticalX) * 0.01;
+    topHorizontalY += (mouseY - topHorizontalY) * 0.02;
+    middleHorizontalY += (mouseY - middleHorizontalY) * 0.03;
+    bottomHorizontalY += (mouseY - bottomHorizontalY) * 0.02;
+  }
+
   //red
   fill(r);
   noStroke();
-  rect(0, 0, 376, 325);
+  rect(0, 0, mainVerticalX, topHorizontalY);
        //yellow
   //fill(254,219,0);
   //noStroke();
   //rect(0,394,57,206);
-  drawGradientRect(0, 525, 76, 275, y1, y2);
+  drawGradientRect(0, middleHorizontalY + 5, leftVerticalX, height - middleHorizontalY - 5, y1, y2);
 
   //blue
-  drawGradientSquare(379, 528, 240, b1, b2);
+  drawGradientRect(
+    mainVerticalX + 3,
+    middleHorizontalY + 8,
+    rightVerticalX - mainVerticalX - 4,
+    bottomHorizontalY - middleHorizontalY - 3,
+    b1,
+    b2
+  );
 
-  drawTexture(30000);
+  image(TextureLayer, 0, 0);
 
   //lines on the layer
   LineLayer.clear();
   LineLayer.stroke(0);
   LineLayer.strokeWeight(12);
-  LineLayer.line(376, 0, 376, 800);
+  LineLayer.line(mainVerticalX, 0, mainVerticalX, 800);
   //
   LineLayer.strokeWeight(19);
-  LineLayer.line(0, 325, 816, 325);
+  LineLayer.line(0, topHorizontalY, 816, topHorizontalY);
   //
-  LineLayer.line(0, 520, 816, 520);
+  LineLayer.line(0, middleHorizontalY, 816, middleHorizontalY);
   //
   LineLayer.strokeWeight(11);
-  LineLayer.line(76, 520, 76, 816);
+  LineLayer.line(leftVerticalX, middleHorizontalY, leftVerticalX, 816);
 
   LineLayer.strokeWeight(11);
-  LineLayer.line(376, 763, 617, 763);
+  LineLayer.line(mainVerticalX, bottomHorizontalY, rightVerticalX - 3, bottomHorizontalY);
 
   LineLayer.strokeWeight(11);
-  LineLayer.line(620, 531, 620, 800);
+  LineLayer.line(rightVerticalX, middleHorizontalY + 11, rightVerticalX, 800);
 
   //FILTER
   LineLayer.filter(BLUR, 1.5, false);
   image(LineLayer, 0, 0);
-//
-  noLoop();
-
-  
 }
 
 //texture
-function drawTexture(density) {
+function drawTexture(layer, density) {
   for (let i = 0; i < density; i++) {
     let x = random(width);
     let y = random(height);
-    stroke(0, random(15, 40));
-    point(x, y);
+    layer.stroke(0, random(15, 40));
+    layer.point(x, y);
   }
 }
 
