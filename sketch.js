@@ -34,12 +34,12 @@ function draw() {
   setGradient(c1, c2);
 
   if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-    mainVerticalX += (mouseX - mainVerticalX) * random(0.01, 0.03);
-    leftVerticalX += (mouseX - leftVerticalX) * random(0.01, 0.03);
-    rightVerticalX += (mouseX - rightVerticalX) * random(0.01, 0.03);
-    topHorizontalY += (mouseY - topHorizontalY) * random(0.01, 0.03);
-    middleHorizontalY += (mouseY - middleHorizontalY) * random(0.01, 0.03);
-    bottomHorizontalY += (mouseY - bottomHorizontalY) * random(0.01, 0.03);
+    mainVerticalX += (mouseX - mainVerticalX) * random(0.005, 0.01);
+    leftVerticalX += (mouseX - leftVerticalX) * random(0.005, 0.01);
+    rightVerticalX += (mouseX - rightVerticalX) * random(0.005, 0.01);
+    topHorizontalY += (mouseY - topHorizontalY) * random(0.005, 0.01);
+    middleHorizontalY += (mouseY - middleHorizontalY) * random(0.005, 0.01);
+    bottomHorizontalY += (mouseY - bottomHorizontalY) * random(0.005, 0.01);
   }
 
   //red
